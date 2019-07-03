@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run prod",
     "server": "babel-node ./src/",
-    "server:prod": "node ./dist/",
+    "server:prod": "node ./dist/index.js",
     "dev": "NODE_ENV=development npm-run-all server",
     "clean": "rimraf dist",
     "build": "./node_modules/.bin/babel ./src --out-dir dist",
