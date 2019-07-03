@@ -1,5 +1,5 @@
 {
     "exec": "npm run dev",
-    "watch": ["_helpers/*", "public/*", "routes/*", "bin/*"],
+    "watch": ["_helpers/*", "public/*", "routes/*", "bin/*", "app.js"],
     "ext": "js, html, css, json"
 }

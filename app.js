@@ -1,3 +1,4 @@
+require('dotenv').config()
 import express from 'express';
 import path from 'path';
 
@@ -5,21 +6,24 @@ import withMiddleware from './_helpers/withMiddleware'
 import withRoutes from './routes';
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://ducvu:b3stAdminH3r3@cluster0-yftd6.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
-    useNewUrlParser: true
-});
+const MongoClient = require('mongodb').MongoClient,
+    username = process.env.MONGODB_USER,
+    password = process.env.MONGODB_PASS,
+    uri = `mongodb+srv://${username}:${password}@cluster0-yftd6.mongodb.net/test?retryWrites=true&w=majority`,
+    client = new MongoClient(uri, {
+        useNewUrlParser: true
+    });
+
 client.connect(err => {
     if (err) {
-        // console.log('failed to connect to db')
+        console.log('failed to connect to db')
         return;
     }
 
     const collection = client.db("test").collection("devices");
     // perform actions on the collection object
 
-
+    console.log('successfully connected to mongodb')
     client.close();
 });
 
