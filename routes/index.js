@@ -1,9 +1,7 @@
 export default (app) => {
 
-  const userRouter = (router) => {
-    app.use(router, require(`./${router}`))
-  }
-
   app.use('/', require('./views'));
-  userRouter('users')
+  app.use('/users', require('./users'));
+  app.use('/auth', require('./auth'));
+
 }
