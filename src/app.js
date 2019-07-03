@@ -9,7 +9,8 @@ import withRoutes from './routes';
 const MongoClient = require('mongodb').MongoClient,
     username = process.env.MONGODB_USER,
     password = process.env.MONGODB_PASS,
-    uri = `mongodb+srv://${username}:${password}@cluster0-yftd6.mongodb.net/test?retryWrites=true&w=majority`,
+    cluster = process.env.MONGODB_CLUSTER,
+    uri = `mongodb+srv://${username}:${password}@${cluster}`,
     client = new MongoClient(uri, {
         useNewUrlParser: true
     });
