@@ -1,17 +1,10 @@
 import express from 'express'
 const router = express.Router()
+import hashPassword from '../_helpers/'
+import authController from '../controllers/auth.controller'
 
 router
-    .post('/register', (req, res, next) => {
-        const user = req.body
-
-        if (user) {
-            res.send(user)
-
-        }
-
-        res.send('missing body')
-    })
+    .post('/register', (req, res, next) => authController.register(req, res, next))
     .post('/login', (req, res, next) => {
         res.send('login')
     })
