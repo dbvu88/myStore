@@ -5,7 +5,7 @@ const ViewsRouter = express.Router();
 /* GET home page. */
 ViewsRouter.get('/', (req, res, next) => {
     res.render('index', {
-        title: 'Express'
+        title: 'Duc Store'
     });
 });
 
