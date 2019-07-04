@@ -3,7 +3,14 @@ const router = express.Router()
 
 router
     .post('/register', (req, res, next) => {
-        res.send('register')
+        const user = req.body
+
+        if (user) {
+            res.send(user)
+
+        }
+
+        res.send('missing body')
     })
     .post('/login', (req, res, next) => {
         res.send('login')
