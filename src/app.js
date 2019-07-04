@@ -2,7 +2,9 @@ require('dotenv').config()
 import express from 'express';
 import path from 'path';
 
-import withMiddleware from './_helpers/withMiddleware'
+import {
+    withMiddleware
+} from './_helpers/'
 import withRoutes from './routes';
 
 
@@ -42,3 +44,5 @@ withMiddleware(app)
 withRoutes(app)
 
 module.exports = app;
+
+console.log('server ready')
