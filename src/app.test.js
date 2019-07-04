@@ -1,23 +1,23 @@
-import request from 'supertest'
-import app from './app'
+/* eslint-disable no-undef */
+import request from 'supertest';
+import app from './app';
 
-
+// eslint-disable-next-line no-undef
 describe('the rootpath', () => {
-    test('should response with status 200', () => {
-        return request(app).get('/').expect(200);
-    });
-})
+  test('should response with status 200', () => request(app)
+    .get('/')
+    .expect(200));
+});
 
 describe('the POST auth/register route', () => {
-    test('should response with the hashed pass', () => {
-        return request(app)
-            .post('/auth/register')
-            .send({
-                username: 'duc',
-                pasword: '123'
-            }).expect(200)
+  test('should response with the hashed pass', () => request(app)
+    .post('/auth/register')
+    .send({
+      username: 'duc',
+      pasword: '123',
     })
-})
+    .expect(200));
+});
 
 // it('will check the matchers and pass', () => {
 //     const user = {

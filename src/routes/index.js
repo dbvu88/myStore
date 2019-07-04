@@ -1,7 +1,9 @@
+import views from './views';
+import users from './users';
+import auth from './auth';
+
 export default (app) => {
-
-  app.use('/', require('./views'));
-  app.use('/users', require('./users'));
-  app.use('/auth', require('./auth'));
-
-}
+  app.use('/', views);
+  app.use('/users', users);
+  app.use('/auth', auth);
+};

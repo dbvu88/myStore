@@ -1,33 +1,34 @@
-require('dotenv').config()
 import express from 'express';
 import path from 'path';
 
 import {
-    withMiddleware
-} from './_helpers/'
+  withMiddleware,
+} from './_helpers';
 import withRoutes from './routes';
 
+require('dotenv').config();
 
-const MongoClient = require('mongodb').MongoClient,
-    username = process.env.MONGODB_USER,
-    password = process.env.MONGODB_PASS,
-    cluster = process.env.MONGODB_CLUSTER,
-    uri = `mongodb+srv://${username}:${password}@${cluster}`,
-    client = new MongoClient(uri, {
-        useNewUrlParser: true
-    });
+const { MongoClient } = require('mongodb');
 
-client.connect(err => {
-    if (err) {
-        console.log('failed to connect to db')
-        return;
-    }
+const username = process.env.MONGODB_USER;
+const password = process.env.MONGODB_PASS;
+const cluster = process.env.MONGODB_CLUSTER;
+const uri = `mongodb+srv://${username}:${password}@${cluster}`;
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+});
 
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
+client.connect((err) => {
+  if (err) {
+    console.log('failed to connect to db');
+    return;
+  }
 
-    console.log('successfully connected to mongodb')
-    client.close();
+  const collection = client.db('test').collection('devices');
+  // perform actions on the collection object
+
+  console.log('successfully connected to mongodb');
+  client.close();
 });
 
 const app = express();
@@ -35,14 +36,14 @@ const app = express();
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: false
+  extended: false,
 }));
 
 
-withMiddleware(app)
+withMiddleware(app);
 
-withRoutes(app)
+withRoutes(app);
 
 module.exports = app;
 
-console.log('server ready')
+console.log('server ready');

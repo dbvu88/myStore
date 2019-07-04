@@ -1,2 +1,2 @@
-export * from './hashPassword'
-export * from './withMiddleware'
+export * from './hashPassword';
+export * from './withMiddleware';

@@ -1,12 +1,12 @@
-import express from 'express'
-const router = express.Router()
-import hashPassword from '../_helpers/'
-import authController from '../controllers/auth.controller'
+import express from 'express';
+import authController from '../controllers/auth.controller';
+
+const router = express.Router();
 
 router
-    .post('/register', (req, res, next) => authController.register(req, res, next))
-    .post('/login', (req, res, next) => {
-        res.send('login')
-    })
+  .post('/register', (req, res, next) => authController.register(req, res, next))
+  .post('/login', (req, res) => {
+    res.send('login');
+  });
 
-module.exports = router
+export default router;
