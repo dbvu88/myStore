@@ -1,9 +1,6 @@
 import express from 'express';
-import path from 'path';
 
-import {
-  withMiddleware,
-} from './_helpers';
+import _helpers from './_helpers';
 import withRoutes from './routes';
 
 require('dotenv').config();
@@ -33,14 +30,7 @@ client.connect((err) => {
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: false,
-}));
-
-
-withMiddleware(app);
+_helpers.withMiddleware(app, express);
 
 withRoutes(app);
 

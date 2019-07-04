@@ -4,7 +4,7 @@ const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 
-export const hashPassword = (password, callback) => {
+export default (password, callback) => {
   console.log('password hashing');
 
   return bcrypt.hash(

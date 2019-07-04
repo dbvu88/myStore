@@ -1,2 +1,7 @@
-export * from './hashPassword';
-export * from './withMiddleware';
+import withMiddleware from './withMiddleware';
+import hashPassword from './hashPassword';
+
+export default {
+  withMiddleware,
+  hashPassword,
+};
