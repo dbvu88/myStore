@@ -1,7 +1,7 @@
-import withMiddleware from './withMiddleware';
+import applyMiddleware from './applyMiddleware';
 import hashPassword from './hashPassword';
 
 export default {
-  withMiddleware,
+  applyMiddleware,
   hashPassword,
 };

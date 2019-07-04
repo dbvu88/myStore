@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const app = express();
 
-_helpers.withMiddleware(app, express);
+_helpers.applyMiddleware(app, express);
 
 withRoutes(app);
 
