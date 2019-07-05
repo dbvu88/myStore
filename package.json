@@ -13,7 +13,8 @@
     "clean": "rimraf dist",
     "build": "./node_modules/.bin/babel ./src --out-dir dist",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "test": "jest --watch"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",

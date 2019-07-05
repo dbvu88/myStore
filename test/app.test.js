@@ -1,16 +1,29 @@
 /* eslint-disable no-undef */
 import request from 'supertest';
-import app from './app';
+import app from '../src/app';
 
 // eslint-disable-next-line no-undef
-describe('the rootpath', () => {
-  test('should response with status 200', () => request(app)
+describe('GET /', () => {
+  test('should response 200', () => request(app)
     .get('/')
     .expect(200));
 });
 
-describe('the POST auth/register route', () => {
-  test('should response with the hashed pass', () => request(app)
+describe('GET users/get', () => {
+  test('should reponse with json', () => request(app)
+    .get('/users')
+    .expect('Content-Type', /json/));
+
+  test('should reponse with a collection of users', () => request(app)
+    .get('/users')
+    .then((res) => {
+      expect(res.body.length).toBeGreaterThan(0);
+      expect(res.body[0].password).toBeUndefined();
+    }));
+});
+
+describe('POST auth/register', () => {
+  test('should response 200', () => request(app)
     .post('/auth/register')
     .send({
       username: 'duc',
@@ -40,3 +53,4 @@ describe('the POST auth/register route', () => {
 //     "name": "LeBron James",
 //   }
 //   `;
+
