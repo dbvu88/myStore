@@ -2,8 +2,8 @@ import express from 'express';
 
 import _helpers from './_helpers';
 import withRoutes from './routes';
+// import './_db';
 
-require('dotenv').config();
 
 const app = express();
 
