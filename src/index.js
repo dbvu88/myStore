@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 
 /**
+ * Module dependencies.
+ */
+// require('./_db');
+const debug = require('debug')('backend:server');
+const http = require('http');
+const app = require('./app');
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
@@ -19,13 +27,6 @@ function normalizePort(val) {
 
   return false;
 }
-/**
- * Module dependencies.
- */
-require('./_db');
-const debug = require('debug')('backend:server');
-const http = require('http');
-const app = require('./app');
 
 /**
  * Get port from environment and store in Express.
