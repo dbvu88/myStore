@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
+require('dotenv').config();
+
+const saltRounds = process.env.SALT_ROUNDS;
 
 export default (password, callback) => {
   console.log('password hashing');
