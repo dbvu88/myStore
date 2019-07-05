@@ -1,4 +1,4 @@
-// import db from '../_db';
+import 'regenerator-runtime';
 import User from '../models/user.model';
 
 const get = async () => {
