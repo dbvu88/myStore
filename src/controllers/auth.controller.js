@@ -1,16 +1,16 @@
-import _helpers from '../_helpers';
+import bcrypt from 'bcrypt';
 
-const register = (req, res, next) => {
-  if (req.body && req.body.password) {
-    _helpers.hashPassword(req.body.password, (err, hash) => {
-      if (err) res.send(err);
-      res.send(hash);
-    });
-  } else {
-    res.send('bad request');
+import hashPassword from '../_helpers/hashPassword';
+
+const register = async (user) => {
+  const { password, ...userInfo } = user;
+
+  if (password) {
+    const hash = await hashPassword(password);
+    return (userInfo);
   }
+  throw new Error('bad request!!!');
 };
-
 export default {
   register,
 };

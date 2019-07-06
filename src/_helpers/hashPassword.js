@@ -4,15 +4,14 @@ require('dotenv').config();
 
 const saltRounds = process.env.SALT_ROUNDS;
 
-export default (password, callback) => {
-  console.log('password hashing');
+export default (password) => {
+  const hash = bcrypt
+    .hash(
+      password,
+      parseInt(saltRounds, 10),
+    )
+    .then(data => data)
+    .catch((err) => { throw err; });
 
-  return bcrypt.hash(
-    password,
-    saltRounds,
-    (err, hash) => {
-      if (err) callback(err);
-      else callback(hash);
-    },
-  );
+  return hash;
 };
