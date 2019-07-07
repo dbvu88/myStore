@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "npm run prod",
-    "server": "babel-node ./src/",
+    "server": "babel-node --require node_modules/dotenv/config ./src/",
     "server:prod": "node ./dist/index.js",
     "dev": "NODE_ENV=development npm-run-all server",
     "clean": "rimraf dist",
