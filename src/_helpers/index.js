@@ -1,7 +1,9 @@
 import applyMiddleware from './applyMiddleware';
-import hashPassword from './hashPassword';
+import getHash from './getHash';
+import getToken from './getToken';
 
 export default {
   applyMiddleware,
-  hashPassword,
+  getHash,
+  getToken,
 };

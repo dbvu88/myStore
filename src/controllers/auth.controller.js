@@ -1,15 +1,28 @@
-import bcrypt from 'bcrypt';
 
-import hashPassword from '../_helpers/hashPassword';
+import getHash from '../_helpers/getHash';
+import Users from '../models/user.model';
 
-const register = async (user) => {
-  const { password, ...userInfo } = user;
+const register = async ({ password, ...userInfo }) => {
+  try {
+    const result = await getHash(password);
 
-  if (password) {
-    const hash = await hashPassword(password);
-    return (userInfo);
+    const {
+      _id: id,
+      firstname,
+      lastname,
+      username,
+    } = await Users.create({
+      password: result, ...userInfo,
+    });
+    return {
+      id,
+      firstname,
+      lastname,
+      username,
+    };
+  } catch (err) {
+    throw err;
   }
-  throw new Error('bad request!!!');
 };
 export default {
   register,
