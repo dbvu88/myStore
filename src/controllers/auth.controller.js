@@ -1,21 +1,25 @@
 
-import getHash from '../_helpers/getHash';
+import _helpers from '../_helpers';
 import Users from '../models/user.model';
 
 const register = async ({ password, ...userInfo }) => {
   try {
-    const result = await getHash(password);
+    const result = await _helpers.getHash(password);
 
+    const user = await Users.create({
+      password: result,
+      ...userInfo,
+    });
     const {
       _id: id,
       firstname,
       lastname,
       username,
-    } = await Users.create({
-      password: result, ...userInfo,
-    });
+    } = user;
+
+    const token = await _helpers.getToken(id);
     return {
-      id,
+      token,
       firstname,
       lastname,
       username,

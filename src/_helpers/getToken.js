@@ -2,9 +2,9 @@ import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
-export default async (user) => {
+export default async (userId) => {
   const token = jwt.sign({
-    sub: user.id,
+    sub: userId,
   },
   process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_SESSION,
