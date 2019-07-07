@@ -1,6 +1,7 @@
-
 import _helpers from '../_helpers';
 import Users from '../models/user.model';
+import 'regenerator-runtime';
+
 
 const register = async ({ password, ...userInfo }) => {
   try {

@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-require('dotenv').config();
-
-export default async (userId) => {
+export default (userId) => {
   const token = jwt.sign({
     sub: userId,
   },
