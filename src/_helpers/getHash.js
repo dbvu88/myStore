@@ -1,15 +1,15 @@
 import bcrypt from 'bcrypt';
 
-const saltRounds = process.env.SALT_ROUNDS;
+const saltRounds = parseInt(process.env.SALT_ROUNDS, 10);
 
-export default (password) => {
-  const hash = bcrypt
-    .hash(
-      password,
-      parseInt(saltRounds, 10),
-    )
-    .then(data => data)
-    .catch((err) => { throw err; });
-
-  return hash;
-};
+export default password => new Promise(async (resolve, reject) => {
+  try {
+    const salt = await bcrypt.genSalt(saltRounds);
+    // const salt = null; // for debug use only;
+    const result = bcrypt.hash(password.toString(), salt);
+    resolve(result);
+  } catch (err) {
+    // eslint-disable-next-line prefer-promise-reject-errors
+    reject();
+  }
+});
