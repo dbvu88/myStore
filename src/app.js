@@ -8,9 +8,15 @@ import withRoutes from './routes';
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
-_helpers.applyMiddleware(app, express, path);
+_helpers.applyMiddleware(app, express);
 
 withRoutes(app);
+
+app.use((err, req, res, next) => {
+  res
+    .status(err.status || 500)
+    .json(err || { message: 'something went wrong' });
+});
 
 module.exports = app;
 
